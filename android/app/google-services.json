@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "294688321968",
+    "firebase_url": "https://gleb-s-projects.firebaseio.com",
+    "project_id": "gleb-s-projects",
+    "storage_bucket": "gleb-s-projects.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294688321968:android:f83956899749c97b74a675",
+        "android_client_info": {
+          "package_name": "com.original.fluxstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294688321968-2cnc2i1u8a6aqeu4f5al7jq9motftk11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjVfEhtN8if2KNgbhDTn_57MU-hUpHcK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294688321968-2cnc2i1u8a6aqeu4f5al7jq9motftk11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
