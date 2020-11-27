@@ -263,27 +263,25 @@ class _ProductScreenState extends State<ProductScreen> {
             ],
           ),
           SizedBox(height: 15),
-          widget.document.data['rating'] != null
-              ? Row(
-                  children: [
-                    StarRating(
-                      size: 20,
-                      colorPrimary: c_primary,
-                      colorSecondary: Colors.black,
-                      starCount: 5,
-                      rating: widget.document.data['rating'].toDouble(),
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      '(${widget.document.data['ratingCount']})',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                  ],
-                )
-              : SizedBox(),
+          Row(
+            children: [
+              StarRating(
+                size: 20,
+                colorPrimary: c_primary,
+                colorSecondary: Colors.black,
+                starCount: 5,
+                rating: widget.document.data['rating'].toDouble(),
+              ),
+              SizedBox(width: 5),
+              Text(
+                '(${widget.document.data['ratingCount']})',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ],
+          ),
           SizedBox(height: 30),
           _dropdownButton(),
           SizedBox(height: 40),

@@ -102,38 +102,42 @@ class _CustomProductItemState extends State<CustomProductItem> {
                       : SizedBox(),
                 ],
               ),
-              SizedBox(height: 8),
               widget.document.data['rating'] != 0
-                  ? Row(
-                      children: [
-                        StarRating(
-                          size: 16,
-                          colorPrimary: c_primary,
-                          colorSecondary: Colors.black,
-                          starCount: 5,
-                          rating: widget.document.data['rating'].toDouble(),
-                        ),
-                        SizedBox(width: 5),
-                        Text(
-                          '(${widget.document.data['ratingCount']})',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Row(
+                        children: [
+                          StarRating(
+                            size: 16,
+                            colorPrimary: c_primary,
+                            colorSecondary: Colors.black,
+                            starCount: 5,
+                            rating: widget.document.data['rating'].toDouble(),
                           ),
-                        ),
-                      ],
+                          SizedBox(width: 5),
+                          Text(
+                            '(${widget.document.data['ratingCount']})',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   : SizedBox(),
-              SizedBox(height: 10),
               widget.document.data['remain'] != ""
-                  ? Text(
-                      'Remain: ${widget.document.data['remain']}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.red,
-                        fontWeight: FontWeight.w400,
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        'Remain: ${widget.document.data['remain']}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.red,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     )
                   : SizedBox(),

@@ -84,7 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     Widget _clothingList() {
       return StreamBuilder(
-        stream: Firestore.instance.collection('Fluxstore').snapshots(),
+        stream: Firestore.instance
+            .collection('Fluxstore')
+            .orderBy('createdAt', descending: false)
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text('Something went wrong'));
@@ -260,6 +263,8 @@ class _HomeScreenState extends State<HomeScreen> {
             'category': "Sweatshirts",
             'material': "Cotton",
             'country': "Germany",
+            'createdAt': Timestamp.now(),
+
           })
           .then((value) => print("Item Added"))
           .catchError((error) => print("Failed to add item: $error"));
