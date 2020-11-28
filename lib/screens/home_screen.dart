@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Text(
                     'Tap & hold the product to add to cart',
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     style: TextStyle(fontWeight: FontWeight.w200),
                   ),
                 ),
@@ -198,13 +198,43 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
+
+
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         backgroundColor: c_background,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home)),
           BottomNavigationBarItem(icon: Icon(Icons.search)),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart)),
+          BottomNavigationBarItem(
+            icon: Stack(
+              children: <Widget>[
+                Icon(Icons.shopping_cart),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: Text(
+                      '10',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person)),
         ],
       ),
@@ -244,48 +274,4 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-
-/* _addItem() {
-    CollectionReference item = Firestore.instance.collection('Fluxstore');
-    List<String> sizes = ["XS", "S", "M", "L", "XL"];
-    List<String> colors = [
-      "0xff565C66#Salute Tight Loops - Blue",
-      "0xffB2BCDD#Colony - Blue",
-      "0xffF8CCCC#Blush - Red",
-      "0xfffcd179#Gold Coast - Yellow",
-      "0xffE1D99D#Oasis - Green",
-    ];
-
-    Future<void> addItem() {
-      return item
-          .add({
-            'imageLow':
-                "https://lsco.scene7.com/is/image/lsco/361360045-front-pdp?fmt=jpeg&qlt=70,1&op_sharpen=0&resMode=sharp2&op_usm=0.8,1,10,0&fit=crop,0&wid=450&hei=600",
-            //261x500
-            'imageHigh':
-                "https://lsco.scene7.com/is/image/lsco/361360045-front-pdp?fmt=jpeg&qlt=70,1&op_sharpen=0&resMode=sharp2&op_usm=0.8,1,10,0&fit=crop,0&wid=1155&hei=1540",
-            //630x1200
-            'title': "Scaridian dress",
-            'mainPrice': "${Random().nextInt(800) + 200}.00",
-            'discountPrice': "${Random().nextInt(100) + 99}.00",
-            'rating': Random().nextInt(5),
-            'ratingCount': Random().nextInt(20),
-            'remain': "2 days 10h:24m",
-            'description':
-                "The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common \"problem\" areas. Find stunning women's cocktail dresses and party dresses.",
-            'sizes': sizes,
-            'colors': colors,
-            'productCode':
-                "${Random().nextInt(9999)}${Random().nextInt(999)}-${Random().nextInt(99)}",
-            'category': "Sweatshirts",
-            'material': "Cotton",
-            'country': "Germany",
-            'createdAt': Timestamp.now(),
-          })
-          .then((value) => print("Item Added"))
-          .catchError((error) => print("Failed to add item: $error"));
-    }
-
-    return addItem();
-  }*/
 }

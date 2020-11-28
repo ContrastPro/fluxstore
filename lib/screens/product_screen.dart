@@ -332,7 +332,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 SizedBox(height: 40),
                 RichText(
                   text: TextSpan(
-                    text: 'Product Code:\t\t',
+                    text: 'Product Code:  ',
                     style: primaryStyle,
                     children: <TextSpan>[
                       TextSpan(
@@ -344,7 +344,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
                 RichText(
                   text: TextSpan(
-                    text: 'Category:\t\t',
+                    text: 'Category:  ',
                     style: primaryStyle,
                     children: <TextSpan>[
                       TextSpan(
@@ -362,7 +362,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
                 RichText(
                   text: TextSpan(
-                    text: 'Material:\t\t',
+                    text: 'Material:  ',
                     style: primaryStyle,
                     children: <TextSpan>[
                       TextSpan(
@@ -374,7 +374,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
                 RichText(
                   text: TextSpan(
-                    text: 'Country:\t\t',
+                    text: 'Country:  ',
                     style: primaryStyle,
                     children: <TextSpan>[
                       TextSpan(
