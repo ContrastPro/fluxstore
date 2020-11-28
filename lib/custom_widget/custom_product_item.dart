@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fluxstore/custom_widget/custom_raiting_bar.dart';
 import 'package:fluxstore/global/colors.dart';
 
+/// CustomProductItem() - widget which used in HomeScreen() for List/Grid View
+/// and displaying list of product
+
 class CustomProductItem extends StatefulWidget {
   final DocumentSnapshot document;
 
@@ -14,6 +17,7 @@ class CustomProductItem extends StatefulWidget {
 }
 
 class _CustomProductItemState extends State<CustomProductItem> {
+  /// _favourite - temporary variable for to test the add to favorites function
   List _favourite = [];
 
   @override
@@ -94,10 +98,11 @@ class _CustomProductItemState extends State<CustomProductItem> {
                       ? Text(
                           '\$ ${widget.document.data['discountPrice'] == "" ? widget.document.data['discountPrice'] : widget.document.data['mainPrice']}',
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w200,
-                              decoration: TextDecoration.lineThrough,
-                              decorationColor: Colors.black26),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w200,
+                            decoration: TextDecoration.lineThrough,
+                            decorationColor: Colors.black26,
+                          ),
                         )
                       : SizedBox(),
                 ],
@@ -135,7 +140,7 @@ class _CustomProductItemState extends State<CustomProductItem> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 12,
-                          color: Colors.red,
+                          color: c_accent,
                           fontWeight: FontWeight.w400,
                         ),
                       ),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluxstore/global/colors.dart';
 
+
+/// CustomContainer() - widget with rounded borders, made in the style of the application
+/// used in main screens of application
+
 class CustomContainer extends StatelessWidget {
   final Widget child;
 

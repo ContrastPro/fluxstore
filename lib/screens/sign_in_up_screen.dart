@@ -21,15 +21,14 @@ class _SignInUpScreenState extends State<SignInUpScreen> {
 
   bool _signIn;
   bool _obscurePassword = true, _obscurePasswordConfirm = true;
+
+  /// _enter - Variable for displaying the download widget
   bool _enter = false;
   User _user = User();
 
   @override
   void initState() {
     _signIn = widget.signIn;
-    AuthNotifier authNotifier =
-        Provider.of<AuthNotifier>(context, listen: false);
-    initializeCurrentUser(authNotifier);
     super.initState();
   }
 
@@ -282,7 +281,7 @@ class _SignInUpScreenState extends State<SignInUpScreen> {
                   _signIn != true ? _buildDisplayNameField() : SizedBox(),
                   _buildEmailField(),
                   _buildPasswordField(),
-                  _signIn != true ? _buildConfirmPasswordField() : Container(),
+                  _signIn != true ? _buildConfirmPasswordField() : SizedBox(),
                   SizedBox(height: 32),
                   Row(
                     children: [
@@ -336,10 +335,10 @@ class _SignInUpScreenState extends State<SignInUpScreen> {
       );
     }
 
+    /// _profileScreen() - is displayed if the current user successfully Logged In
+
     Widget _profileScreen() {
-      TextStyle textStyle = TextStyle(
-        fontSize: 18,
-      );
+      TextStyle textStyle = TextStyle(fontSize: 18);
 
       return Stack(
         children: [

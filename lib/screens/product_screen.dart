@@ -120,6 +120,9 @@ class _ProductScreenState extends State<ProductScreen> {
                 icon: Icon(Icons.keyboard_arrow_down),
                 items: widget.document.data['colors']
                     .map<DropdownMenuItem<String>>((value) {
+
+                  /// splitColor - list of String which contains two parameters, color and color description
+                  /// received from the server in array, for example: 0xffD5AB7F#Iced Coffee - Brown
                   List<String> splitColor = value.split('#');
 
                   return DropdownMenuItem(
@@ -144,18 +147,14 @@ class _ProductScreenState extends State<ProductScreen> {
                             ),
                           ],
                         ),
+                        SizedBox(width: 10),
                         Padding(
                           padding: const EdgeInsets.only(right: 15),
-                          child: Row(
-                            children: [
-                              SizedBox(width: 10),
-                              Text(
-                                splitColor[1],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontWeight: FontWeight.w300),
-                              ),
-                            ],
+                          child: Text(
+                            splitColor[1],
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontWeight: FontWeight.w300),
                           ),
                         ),
                       ],

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluxstore/api/authentication_api.dart';
 import 'package:fluxstore/custom_widget/custom_fade_route.dart';
 import 'package:fluxstore/custom_widget/custom_progress_indicator.dart';
 import 'package:fluxstore/global/colors.dart';
 import 'package:fluxstore/screens/home_screen.dart';
 import 'package:fluxstore/screens/sign_in_up_screen.dart';
+import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -20,11 +22,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    AuthNotifier authNotifier =
+        Provider.of<AuthNotifier>(context, listen: false);
+
+    /// initializeCurrentUser() - method for checking current User authorization Firebase
+    initializeCurrentUser(authNotifier);
   }
 
   _goToSignInUpScreen({bool signIn}) {
     Navigator.push(
       context,
+
+      /// FadeRoute() - custom Navigation route for example, like MaterialPageRoute()
       FadeRoute(
         page: SignInUpScreen(signIn: signIn),
       ),
@@ -34,9 +43,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   _goToHomeScreen() {
     Navigator.push(
       context,
-      FadeRoute(
-        page: HomeScreen(),
-      ),
+      FadeRoute(page: HomeScreen()),
     );
   }
 

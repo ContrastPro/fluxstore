@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+/// Global classes and methods for signing In/Up Users in app
 class User {
   String displayName;
   String email;
@@ -20,6 +21,7 @@ class AuthNotifier with ChangeNotifier {
   }
 }
 
+/// signOut() - method for signing out an authorized User from their account
 signOut(AuthNotifier authNotifier) async {
   await FirebaseAuth.instance
       .signOut()
@@ -28,6 +30,7 @@ signOut(AuthNotifier authNotifier) async {
   authNotifier.setUser(null);
 }
 
+/// initializeCurrentUser() - method for checking current User authorization Firebase
 initializeCurrentUser(AuthNotifier authNotifier) async {
   FirebaseUser firebaseUser = await FirebaseAuth.instance.currentUser();
 

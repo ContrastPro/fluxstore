@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+/// Global constant Colors which using in whole app
 const c_background = const Color(0xffffffff);
 const c_primary = const Color(0xff5ECE7B);
 const c_secondary = const Color(0xff485B5D);

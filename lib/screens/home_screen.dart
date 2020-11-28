@@ -1,13 +1,14 @@
-import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluxstore/api/authentication_api.dart';
 import 'package:fluxstore/custom_widget/custom_product_item.dart';
 import 'package:fluxstore/custom_widget/custom_container.dart';
 import 'package:fluxstore/custom_widget/custom_fade_route.dart';
 import 'package:fluxstore/global/colors.dart';
 import 'package:fluxstore/screens/product_screen.dart';
 import 'package:fluxstore/screens/sign_in_up_screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,9 +16,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    AuthNotifier authNotifier =
+        Provider.of<AuthNotifier>(context, listen: false);
+
+    /// initializeCurrentUser() - method for checking current User authorization Firebase
+    initializeCurrentUser(authNotifier);
+    super.initState();
+  }
+
   _goToDetailScreen({BuildContext context, DocumentSnapshot document}) {
     Navigator.push(
       context,
+
+      /// FadeRoute() - custom Navigation route for example, like MaterialPageRoute()
       FadeRoute(
         page: ProductScreen(document: document),
       ),
@@ -50,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: MainAxisAlignment.center,
                   children: [
                     FlatButton.icon(
-                      onPressed: () => _addItem(),
+                      onPressed: () {},
                       icon: Text(
                         "SORT  BY",
                         style: TextStyle(
@@ -64,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Icon(
                           Icons.compare_arrows,
                           size: 18,
-                          color: t_secondary,
+                          color: Colors.black38,
                         ),
                       ),
                     ),
@@ -82,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    Widget _clothingList() {
+    Widget _productList() {
       return StreamBuilder(
         stream: Firestore.instance
             .collection('Fluxstore')
@@ -140,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.filter_list),
+              icon: Icon(Icons.tune),
               onPressed: () {},
             ),
           ],
@@ -150,12 +163,14 @@ class _HomeScreenState extends State<HomeScreen> {
             physics: BouncingScrollPhysics(),
             children: [
               _sortField(),
-              _clothingList(),
+              _productList(),
             ],
           ),
         ),
       );
     }
+
+    /// _anotherPage() - TabView page layout
 
     Widget _anotherPage({String title}) {
       return Scaffold(
@@ -170,12 +185,14 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.filter_list),
+              icon: Icon(Icons.tune),
               onPressed: () {},
             ),
           ],
         ),
         body: CustomContainer(
+          /// You can add your own widgets here. This could be ListView() for example
+
           child: Center(child: Text(title)),
         ),
       );
@@ -228,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _addItem() {
+/* _addItem() {
     CollectionReference item = Firestore.instance.collection('Fluxstore');
     List<String> sizes = ["XS", "S", "M", "L", "XL"];
     List<String> colors = [
@@ -264,12 +281,11 @@ class _HomeScreenState extends State<HomeScreen> {
             'material': "Cotton",
             'country': "Germany",
             'createdAt': Timestamp.now(),
-
           })
           .then((value) => print("Item Added"))
           .catchError((error) => print("Failed to add item: $error"));
     }
 
     return addItem();
-  }
+  }*/
 }

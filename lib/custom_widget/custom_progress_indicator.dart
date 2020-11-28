@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// CustomProgressIndicator() - widget which used in WelcomeScreen() for displaying
+/// current page in PageView()
+
 class CustomProgressIndicator extends StatelessWidget {
   final int index;
   final int progressCount;

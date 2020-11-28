@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// StarRating() - widget which used in CustomProductItem() and ProductScreen()
+/// for displaying current rating of product
+
 class StarRating extends StatelessWidget {
   final int starCount;
   final double size;
